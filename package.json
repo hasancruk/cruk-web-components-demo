@@ -1,0 +1,9 @@
+{
+  "name": "cruk-web-components-demo",
+  "version": "0.0.1",
+  "description": "This is a demo for the CRUK Web Components.",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "license": "MIT"
+}
