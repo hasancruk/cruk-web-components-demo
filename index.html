@@ -3,15 +3,80 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>CRUK Web Component</title>
+		<title>CRUK Web Component Demo</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "cruk-carousel": "https://esm.sh/@hasancruk/cruk-carousel",
+          "cruk-img": "https://esm.sh/@hasancruk/cruk-img",
+          "cruk-textarea": "https://esm.sh/@hasancruk/cruk-textarea"
+        }
+      }
+    </script>
+    <link rel="preload" as="image" href="./assets/low-res.jpg" fetchpriority="high">
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        font: inherit;
+      }
+
+      header {
+        margin-inline: 0.5rem;
+      }
+
+      main > section {
+        border: 0.15rem solid #212121;
+        border-radius: 0.8rem;
+        box-shadow: 0.3rem 0.3rem #212121;
+        margin-block: 1rem;
+        margin-inline: 0.5rem;
+        padding-inline: 0.8rem;
+      }
+
+      @media(min-width: 576px) {
+        header {
+          margin-inline: 0.8rem;
+        }
+
+        main > section {
+          margin-block: 1rem;
+          margin-inline: 10%;
+          padding-inline: 1rem;
+        }
+      }
+    </style>
   </head>
 	<body>
+    <script type="module">
+      import "cruk-textarea";
+      import "cruk-img";
+      import "cruk-carousel";
+    </script>
     <header>
-      <h1>CRUK Web Components</h1>
+      <h1>CRUK Web Components Demo</h1>
     </header>
     <main>
       <section>
+        <h2>Img</h2>
+        <p>Low Quality Image Placeholder Component</p>
+        <!-- https://unsplash.com/photos/a-cloudy-sky-over-the-ocean-with-a-lighthouse-in-the-distance-Fel_RmObl20?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash -->
+        <cruk-img 
+          src="./assets/hi-res.jpg" 
+          lowsrc="./assets/low-res.jpg"
+          alt="Windswept sea and clouds at sunset, Corbière Lighthouse, St. Brelade, Jersey, Channel Islands"
+          width="640"
+          height="348"
+        ></cruk-img>
+        <p>The above image is being loaded lazily</p>
+      </section>
+      <section>
         <h2>Textarea</h2>
+        <p>Auto-resizing textarea</p>
         <form method="POST">
           <label for="thoughts">What are you thinking?</label>
           <cruk-textarea>
@@ -28,6 +93,7 @@
       </section>
       <section>
         <h2>Carousel</h2>
+        <p>Swippable carousel with controls</p>
         <cruk-carousel>
           <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.enHnJ33r9erP04V1MdL9iwHaE7%26pid%3DApi&f=1&ipt=9532000156b291da854f4bb4c135a6c265c3ac468dca392f7f1e44b2a1354354&ipo=images" alt="" />
           <img src="https://fthmb.tqn.com/M4vd2y1a6SHUAlMYYUQExR1Jnlc=/3867x2578/filters:fill(auto,1)/Shooting-in-RAW-TIFF-JPEG-5682ac103df78ccc15bfef42.jpg" alt="" />
@@ -65,20 +131,6 @@
 
         e.target.reset();
       });
-    </script>
-    <script type="importmap">
-      {
-        "imports": {
-          "cruk-carousel": "https://esm.sh/@hasancruk/cruk-carousel@0.2.1",
-          "cruk-img": "https://esm.sh/@hasancruk/cruk-img@0.1.1",
-          "cruk-textarea": "https://esm.sh/@hasancruk/cruk-textarea@0.1.0"
-        }
-      }
-    </script>
-    <script type="module">
-      import "cruk-textarea";
-      import "cruk-img";
-      import "cruk-carousel";
     </script>
 	</body>
 </html>
